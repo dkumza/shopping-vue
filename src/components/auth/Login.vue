@@ -69,9 +69,7 @@ export default {
       if (v$.value.$error) {
         console.log('Form is invalid');
       } else {
-        // use axiosLogin function from userStore
         userStore.axiosLogin({ email: email.value, password: password.value });
-        // console.log(`Email: ${email.value}, Password: ${password.value}`);
       }
     }
 

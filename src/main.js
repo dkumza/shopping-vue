@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia'; // pinia import
 import { useUserStore } from './stores/auth';
+import Toast from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
 import router from './router/router'; // router import
 import App from './App.vue';
 import './style.css';
@@ -11,6 +13,10 @@ const pinia = createPinia();
 const app = createApp(App);
 // use pininia/store
 app.use(pinia);
+// use toaster
+app.use(Toast, {
+  // add options here
+});
 
 // check if data exists in LS
 const userStore = useUserStore();

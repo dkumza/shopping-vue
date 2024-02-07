@@ -1,6 +1,10 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import { router } from '../router/router';
+import { useToast } from 'vue-toastification';
+
+// Create a new instance of Toast
+const toast = useToast();
 
 const LOGIN_URL = 'http://localhost:3000/api/auth/login';
 
@@ -21,6 +25,9 @@ export const useUserStore = defineStore({
           if (token) {
             this.logIn({ token, name });
             router.push('/');
+            toast.success(res.data.msg, {
+              timeout: 2000,
+            });
           }
         })
         .catch((error) => {
@@ -42,6 +49,9 @@ export const useUserStore = defineStore({
       localStorage.removeItem('s_name');
       localStorage.removeItem('s_token');
       this.userData = null;
+      toast.success('Successfully logged out', {
+        timeout: 2000,
+      });
     },
   },
   getters: {
