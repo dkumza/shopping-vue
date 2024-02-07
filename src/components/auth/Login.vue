@@ -52,21 +52,26 @@
 import { ref } from 'vue';
 import { required } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
+import { useUserStore } from '../../stores/auth';
 
 export default {
   setup() {
-    const email = ref('');
-    const password = ref('');
+    const email = ref('admin@admin.qq');
+    const password = ref('123456');
     const rules = { email: { required }, password: { required } };
     const v$ = useVuelidate(rules, { email, password });
+
+    // use imported store from stores/auth
+    const userStore = useUserStore();
 
     function submitForm() {
       v$.value.$touch();
       if (v$.value.$error) {
-        // Form is invalid
+        console.log('Form is invalid');
       } else {
-        // Handle form submission here
-        console.log(`Email: ${email.value}, Password: ${password.value}`);
+        // use axiosLogin function from userStore
+        userStore.axiosLogin({ email: email.value, password: password.value });
+        // console.log(`Email: ${email.value}, Password: ${password.value}`);
       }
     }
 
