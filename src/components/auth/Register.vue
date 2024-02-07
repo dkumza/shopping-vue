@@ -52,7 +52,11 @@
     <div class="my-1">
       <p class="text-end text-stone-600 text-sm">
         Already have account?
-        <span class="text-violet-700 hover:cursor-pointer hover:underline">Login</span>
+        <router-link
+          to="/login"
+          class="text-violet-700 hover:cursor-pointer hover:underline"
+          >Login</router-link
+        >
       </p>
     </div>
   </div>
