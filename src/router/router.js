@@ -24,6 +24,7 @@ router.beforeEach((to, from, next) => {
   // declare store and loggedIn from store getter
   const userStore = useUserStore();
   const loggedIn = computed(() => userStore.isLoggedIn);
+  console.log('loggedIn.value: ', loggedIn.value);
 
   if (loggedIn.value && openRoutes.includes(to.path)) {
     next('/');

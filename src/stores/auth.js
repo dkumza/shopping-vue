@@ -17,9 +17,9 @@ export const useUserStore = defineStore({
       axios
         .post(LOGIN_URL, loginInfo)
         .then((res) => {
-          const { token, username } = res.data;
+          const { token, name } = res.data;
           if (token) {
-            this.logIn({ token, username });
+            this.logIn({ token, name });
             router.push('/');
           }
         })
@@ -34,15 +34,19 @@ export const useUserStore = defineStore({
     logIn(data) {
       this.loggedIn = true;
       this.userData = data;
-      console.log(this.loggedIn);
+      localStorage.setItem('s_name', data.name);
+      localStorage.setItem('s_token', data.token);
     },
     logOut() {
       this.loggedIn = false;
+      localStorage.removeItem('s_name');
+      localStorage.removeItem('s_token');
       this.userData = null;
     },
   },
   getters: {
-    isLoggedIn: (state) => state.loggedIn,
+    // if state.loggedIn truthy return true, else - false to control login
+    isLoggedIn: (state) => (state.loggedIn ? true : false),
     // other getters...
   },
 });
