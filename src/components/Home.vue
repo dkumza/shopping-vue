@@ -1,15 +1,17 @@
 <template>
-  <div class="container mx-auto border">
-    <div>Home</div>
-    <button class="border py-1 px-6" @click="logout">Log Out</button>
+  <div class="">
+    <Header />
   </div>
 </template>
 
 <script>
 import { useUserStore } from '../stores/auth';
 import { useRouter } from 'vue-router';
+import Header from './Header.vue';
 
 export default {
+  // declaring inserted components:
+  components: { Header },
   setup() {
     // use imported store from stores/auth
     const userStore = useUserStore();

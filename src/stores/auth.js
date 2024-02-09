@@ -25,7 +25,7 @@ export const useUserStore = defineStore({
             this.logIn({ token, name });
             router.push('/');
             toast.success(res.data.msg, {
-              timeout: 2000,
+              timeout: 1500,
             });
           }
         })
@@ -36,7 +36,7 @@ export const useUserStore = defineStore({
           );
           this.error = err.response.data;
           toast.error(err.response.data.error, {
-            timeout: 2000,
+            timeout: 1500,
           });
         });
     },
@@ -52,7 +52,7 @@ export const useUserStore = defineStore({
       localStorage.removeItem('s_token');
       this.userData = null;
       toast.success('Logged out', {
-        timeout: 2000,
+        timeout: 1500,
       });
     },
   },
