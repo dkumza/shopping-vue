@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-lime-100">
+  <div class="">
     <div
-      class="flex justify-between items-baseline px-4 py-2 container mx-auto text-violet-800"
+      class="flex justify-between items-baseline py-2 container mx-auto text-violet-800"
     >
       <div class="flex items-center gap-2">
         <div class="text-5xl">trade</div>
@@ -19,21 +19,22 @@
         <div class="div flex justify-center items-center px-2">
           <span class="material-symbols-outlined text-lg"> settings </span>
         </div>
-
-        <!-- <div class="div">User</div> -->
         <button class="div flex justify-center items-center pl-4" @click="logout">
           <span class="material-symbols-outlined text-lg"> logout </span>
         </button>
       </div>
     </div>
   </div>
+  <Search />
 </template>
 
 <script>
-import { useUserStore } from '../stores/auth';
+import { useUserStore } from '../../stores/auth';
 import { useRouter } from 'vue-router';
+import Search from './Search.vue';
 
 export default {
+  components: { Search },
   setup() {
     // use imported store from stores/auth
     const userStore = useUserStore();

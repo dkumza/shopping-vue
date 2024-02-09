@@ -7,7 +7,7 @@
 <script>
 import { useUserStore } from '../stores/auth';
 import { useRouter } from 'vue-router';
-import Header from './Header.vue';
+import Header from './header/Header.vue';
 
 export default {
   // declaring inserted components:
