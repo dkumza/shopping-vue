@@ -17,7 +17,6 @@ export const useUserStore = defineStore({
   }),
   actions: {
     axiosLogin(loginInfo) {
-      console.log('loginInfo: ', loginInfo);
       axios
         .post(LOGIN_URL, loginInfo)
         .then((res) => {
@@ -30,12 +29,15 @@ export const useUserStore = defineStore({
             });
           }
         })
-        .catch((error) => {
+        .catch((err) => {
           console.log(
             'this.error = error.response.data;: ',
-            (this.error = error.response.data),
+            (this.error = err.response.data),
           );
-          this.error = error.response.data;
+          this.error = err.response.data;
+          toast.error(err.response.data.error, {
+            timeout: 2000,
+          });
         });
     },
     logIn(data) {
@@ -49,7 +51,7 @@ export const useUserStore = defineStore({
       localStorage.removeItem('s_name');
       localStorage.removeItem('s_token');
       this.userData = null;
-      toast.success('Successfully logged out', {
+      toast.success('Logged out', {
         timeout: 2000,
       });
     },
