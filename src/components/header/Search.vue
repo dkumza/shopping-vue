@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto text-violet-700 bg-violet-200 py-2 px-4">
+  <div class="container text-violet-700 bg-violet-200 py-2 px-4">
     <div class="flex justify-between">
       <div class="flex items-center gap-2 w-7/12">
         <input class="px-3 py-1 w-full" placeholder="Search for items" />
