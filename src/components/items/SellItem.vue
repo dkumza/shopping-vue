@@ -1,6 +1,6 @@
 <template>
-  <div class="container w-full border">
-    <div class="text-center text-2xl w-full border">Sell Item</div>
+  <div class="container w-full">
+    <div class="text-center text-2xl w-full">Sell Item</div>
     <div class="flex">
       <form class="">
         <input
