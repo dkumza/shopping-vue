@@ -23,11 +23,11 @@
       </button>
     </div>
   </div>
-  <Search v-if="currentRoute !== '/sell'" />
+  <Search v-if="sellItemsRoute !== '/sell'" />
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useUserStore } from '../../stores/auth';
 import { useRouter, useRoute } from 'vue-router';
 import Search from './Search.vue';
@@ -41,11 +41,8 @@ export default {
     const router = useRouter();
     const route = useRoute();
 
-    const currentRoute = ref('');
-
-    onMounted(() => {
-      currentRoute.value = route.path;
-    });
+    // track route path and update component - Search visibility
+    const sellItemsRoute = computed(() => route.path);
 
     const navigateToHome = () => {
       router.push('/');
@@ -56,7 +53,7 @@ export default {
       router.push('/login');
     };
 
-    return { logout, navigateToHome, currentRoute };
+    return { logout, navigateToHome, sellItemsRoute };
   },
 };
 </script>
