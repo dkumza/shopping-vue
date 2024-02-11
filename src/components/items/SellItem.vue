@@ -15,5 +15,7 @@
 </template>
 
 <script>
+// TODO fetch item categories from API,
+// Create form to add items to API
 // const prodData = [title, description, price, cat_id, img_url, city];
 </script>
