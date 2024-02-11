@@ -1,28 +1,26 @@
 <template>
-  <div class="">
-    <div
-      class="flex justify-between items-baseline py-2 container mx-auto text-violet-800"
-    >
-      <div class="flex items-center gap-2">
-        <div class="text-5xl">trade</div>
-        <div class="text-xs pt-3">
-          Trade partner<br />
-          that all we trust
-        </div>
+  <div
+    class="flex md:flex-row flex-col justify-between items-baseline py-2 container text-violet-800"
+  >
+    <div class="flex items-center gap-2">
+      <div class="text-5xl">trade</div>
+      <div class="text-xs pt-3">
+        Trade partner<br />
+        that all we trust
       </div>
-      <div class="wrap flex divide-x text-sm">
-        <div class="div flex justify-center items-center text-center px-2">
-          <span class="material-symbols-outlined text-lg"> favorite </span>
-        </div>
-        <div class="div flex justify-center items-center text-center px-2">My Sales</div>
-        <div class="div flex justify-center items-center px-2">My Items</div>
-        <div class="div flex justify-center items-center px-2">
-          <span class="material-symbols-outlined text-lg"> settings </span>
-        </div>
-        <button class="div flex justify-center items-center pl-4" @click="logout">
-          <span class="material-symbols-outlined text-lg"> logout </span>
-        </button>
+    </div>
+    <div class="flex md:w-fit w-full justify-center divide-x text-sm">
+      <div class="div flex justify-center items-center text-center px-2">
+        <span class="material-symbols-outlined text-lg"> favorite </span>
       </div>
+      <div class="div flex justify-center items-center text-center px-2">My Sales</div>
+      <div class="div flex justify-center items-center px-2">My Items</div>
+      <div class="div flex justify-center items-center px-2">
+        <span class="material-symbols-outlined text-lg" @click.stop=""> settings </span>
+      </div>
+      <button class="div flex justify-center items-center pl-4" @click="logout">
+        <span class="material-symbols-outlined text-lg"> logout </span>
+      </button>
     </div>
   </div>
   <Search />
