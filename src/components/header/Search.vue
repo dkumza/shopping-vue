@@ -10,10 +10,28 @@
       <div class="flex items-center">
         <button
           class="flex w-[100px] items-center text-center bg-violet-600 px-4 py-1 text-white hover:bg-violet-500"
+          @click="navigateToSell"
         >
-          Sell item
+          Sell Item
         </button>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { useRouter } from 'vue-router';
+
+export default {
+  components: {},
+  setup() {
+    const router = useRouter();
+
+    const navigateToSell = () => {
+      router.push('/sell');
+    };
+
+    return { navigateToSell };
+  },
+};
+</script>

@@ -3,7 +3,7 @@
     class="flex md:flex-row flex-col justify-between items-baseline py-2 container text-violet-800"
   >
     <div class="flex items-center gap-2">
-      <div class="text-5xl">trade</div>
+      <div class="text-5xl" @click="navigateToHome">trade</div>
       <div class="text-xs pt-3">
         Trade partner<br />
         that all we trust
@@ -23,12 +23,13 @@
       </button>
     </div>
   </div>
-  <Search />
+  <Search v-if="currentRoute !== '/sell'" />
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
 import { useUserStore } from '../../stores/auth';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import Search from './Search.vue';
 
 export default {
@@ -38,13 +39,24 @@ export default {
     const userStore = useUserStore();
     // use imported router
     const router = useRouter();
+    const route = useRoute();
+
+    const currentRoute = ref('');
+
+    onMounted(() => {
+      currentRoute.value = route.path;
+    });
+
+    const navigateToHome = () => {
+      router.push('/');
+    };
 
     const logout = () => {
       userStore.logOut();
       router.push('/login');
     };
 
-    return { logout };
+    return { logout, navigateToHome, currentRoute };
   },
 };
 </script>
